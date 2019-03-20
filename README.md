@@ -1,11 +1,11 @@
 # diary-app - Ruby Module Evaluation
 
 Members:
-Lian Nivin
-Brayan Ciudad
-Marieth Perez
-Paulo Tijero
-Deyvi Conde
+Lian Nivin (Developer)
+Brayan Ciudad (Tech Lead)
+Marieth Perez (Product Owner)
+Paulo Tijero (Developer)
+Deyvi Conde (Developer)
 
 ## Instructions
 

@@ -2,11 +2,11 @@
 
 ### Members
 
--Lian Nivin => Developer
--Brayan Ciudad => Tech Lead
--Marieth Perez => Product Owner
--Paulo Tijero => Developer
--Deyvi Conde => Developer
+- Lian Nivin => Developer
+- Brayan Ciudad => Tech Lead
+- Marieth Perez => Product Owner
+- Paulo Tijero => Developer
+- Deyvi Conde => Developer
 
 ## Instructions
 

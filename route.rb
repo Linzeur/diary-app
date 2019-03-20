@@ -3,7 +3,7 @@ require "sinatra/reloader"
 require "sinatra/content_for"
 require "erb"
 
-set :port,8006
+set :port,8001
 
 get "/" do
 

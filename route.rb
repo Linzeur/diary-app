@@ -6,7 +6,6 @@ require "erb"
 set :port,8000
 
 get "/" do
-
   erb :list, {:layout=> :layout}
   erb :daily, {:layout=> :layout}
 end

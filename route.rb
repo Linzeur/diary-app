@@ -10,3 +10,10 @@ get "/" do
   erb :daily, {:layout=> :layout}
 end
 
+post '/' do 
+  #save_workshop(params["title"], params["content"])
+  @message = "La nueva entrada de titulo #{params[:title]} fue creado exitosamente"
+  erb :list
+  erb :success
+
+end

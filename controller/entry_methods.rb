@@ -12,6 +12,7 @@ end
 def save_data(entry)
   data_file = read_data
   identifier = Time.now.getutc.to_i
+  entry["id"] = entry
   data_file[identifier] = entry
   File.open($path_data, "w+") do |file|
     file.write data_file.to_json

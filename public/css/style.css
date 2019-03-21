@@ -71,3 +71,8 @@ body {
   cursor: pointer;
   text-decoration: white underline;
 }
+.menu,
+.menu:hover {
+  text-decoration: none;
+  color: black;
+}

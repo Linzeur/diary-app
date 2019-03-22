@@ -12,7 +12,7 @@ get "/" do
   @data = list_daily
   erb :list
   erb :list_entry
-  erb :daily
+  erb :entry
 end
 
 # post "/prueba" do
@@ -43,7 +43,7 @@ get "/photo" do
   @data = list_daily
   erb :list
   erb :add_photo
-  erb :daily
+  erb :entry
 end
 
 

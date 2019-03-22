@@ -25,35 +25,19 @@ end
 # end
 
 post '/' do
-  puts params
-  inputs = Hash.new
-  inputs["title"] = params["title"]
-  inputs["content"] = params["content"]
-  unless params.has_key?("id")
-    inputs["datetime"] = params["date"] + " " + params["time"]
-    inputs["content_before"] = [] 
-    inputs["highlight"] = 0
-    inputs["is_deleted"] = 0
-    inputs["deleted_datetime"] = ""
-    add_data(inputs)
-    @message = "La nueva entrada de titulo #{params[:title]} fue creado exitosamente"
-  else
-    update_data(params["id"], inputs["title"], inputs["content"])
-    @message = "La entrada de titulo #{params[:title]} fue actualizado exitosamente"
-  end
+  @message = validate_new_or_update_data(params) 
   @data = list_daily
   erb :list
   erb :list_entry
   erb :success
-
 end
+
 get "/photo" do
   @data = list_daily
   erb :list
   erb :add_photo
-  erb :entry
+  erb :list_photos
 end
-
 
 get "/add-entry" do
   @data = list_daily
@@ -68,11 +52,17 @@ get "/delete" do
 end
 
 get "/edit" do
-  id = params["id"]
-  data_file = read_data
-  @entry_json = data_file[id]
+  @entry_json = recover_element(params["id"])
   @data = list_daily
   erb :list
   erb :list_entry
   erb :entry
+end
+
+get "/view" do
+  @entry_json = recover_element(params["id"])
+  @data = list_daily
+  erb :list
+  erb :list_entry
+  erb :view
 end

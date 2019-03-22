@@ -54,17 +54,34 @@ textarea {
 .content {
   padding: 5px 20px;
 }
+
 .content-body {
   padding: 10px 7px;
   background-color: #eaeaea;
   border-radius: 5px;
 }
+
 .content-body p {
   margin: 0;
 }
+
+.container {
+  display: flex;
+  flex-wrap: wrap-reverse;
+}
+
+.item {
+  width: 230px;
+  height: 200px;
+  object-fit: cover;
+  padding: 15px;
+  border: 1px solid black;
+}
+
 .overflow {
   width: 16em;
 }
+
 .ellipsis {
   text-overflow: ellipsis;
   white-space: nowrap;

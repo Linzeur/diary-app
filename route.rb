@@ -29,15 +29,14 @@ post '/' do
   erb :list
   erb :list_entry
   erb :success
-
 end
+
 get "/photo" do
   @data = list_daily
   erb :list
   erb :add_photo
   erb :list_photos
 end
-
 
 get "/add-entry" do
   @data = list_daily
@@ -57,4 +56,12 @@ get "/edit" do
   erb :list
   erb :list_entry
   erb :entry
+end
+
+get "/view" do
+  @entry_json = recover_element(params["id"])
+  @data = list_daily
+  erb :list
+  erb :list_entry
+  erb :view
 end

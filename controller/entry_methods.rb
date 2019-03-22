@@ -1,7 +1,6 @@
 require 'json'
 
 $path_data = "./data/entries.json"
-
 def read_data
   data_file = File.read($path_data)
   data_file = "{}" if data_file == ""
@@ -14,7 +13,6 @@ def save_data(data)
     file.write data.to_json
   end
 end
-
 def add_data(entry)
   data_file = read_data
   identifier = Time.now.getutc.to_i

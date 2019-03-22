@@ -11,15 +11,11 @@
       href="https://emojipedia.org/static/img/favicons/favicon-32x32.png"
       sizes="32x32"
     />
-    <!-- CSS -->
-    <!-- Bootstrap 3.3.7 -->
     <link
       rel="stylesheet"
       href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
     />
     <link rel="stylesheet" href="/css/style.css" />
-
-    <!-- JS -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   </head>
   <body>
@@ -28,12 +24,11 @@
         <div class="row">
           <div class="body-daily">
             <div class="col-sm-4">
-              <!-- List -->
               <%= yield_content :list %>
             </div>
             <div class="col-sm-8">
-            <!-- Daily -->
               <%= yield_content :entry if content_for?(:entry) %>
+              <%= yield_content :message if content_for?(:message) %>
               <%= yield_content :list_photos if content_for?(:list_photos) %>
             </div>
           </div>

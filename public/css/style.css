@@ -2,6 +2,9 @@ body {
   /* background-image: url("/img/bg.jpg"); */
   background-color: #eaeaea;
 }
+textarea {
+  resize: none;
+}
 .body-daily {
   margin: 5%;
 }

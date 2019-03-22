@@ -27,14 +27,13 @@ textarea {
 .card-list {
   background-color: #eaeaea;
   border-radius: 5px;
-  margin: 3%;
-  padding: 5%;
+  margin: 10px 5px;
+  padding: 5px;
   display: flex;
   justify-content: space-around;
   align-items: center;
 }
 .card-list:hover {
-  cursor: pointer;
   -webkit-box-shadow: 4px 4px 9px 0px rgba(102, 102, 102, 1);
   -moz-box-shadow: 4px 4px 9px 0px rgba(102, 102, 102, 1);
   box-shadow: 4px 4px 9px 0px rgba(102, 102, 102, 1);
@@ -58,4 +57,25 @@ textarea {
 }
 .content-body p {
   margin: 0;
+}
+.overflow {
+  width: 16em;
+}
+.ellipsis {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.select {
+  color: white;
+  background-color: black;
+}
+.select:hover {
+  cursor: pointer;
+  text-decoration: white underline;
+}
+.menu,
+.menu:hover {
+  text-decoration: none;
+  color: black;
 }

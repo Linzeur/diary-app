@@ -43,7 +43,7 @@ get "/photo" do
   @data = list_daily
   erb :list
   erb :add_photo
-  erb :daily
+  erb :entry
 end
 
 

@@ -24,9 +24,8 @@ end
 #   "Hola"
 # end
 
-post '/' do 
-  # save_workshop(params["title"], params["content"])
-  inputs = Hash.new 
+post '/' do
+  inputs = Hash.new
   inputs["title"] = params["title"]
   inputs["datetime"] = params["date"] + params["time"]
   inputs["content"] = params["content"]

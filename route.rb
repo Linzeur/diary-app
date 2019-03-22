@@ -28,17 +28,17 @@ post '/' do
   puts params
   inputs = Hash.new
   inputs["title"] = params["title"]
-  inputs["datetime"] = params["date"] + " " + params["time"]
   inputs["content"] = params["content"]
-  inputs["content_before"] = [] 
-  inputs["highlight"] = 0
-  inputs["is_deleted"] = 0
-  inputs["deleted_datetime"] = ""
   unless params.has_key?("id")
+    inputs["datetime"] = params["date"] + " " + params["time"]
+    inputs["content_before"] = [] 
+    inputs["highlight"] = 0
+    inputs["is_deleted"] = 0
+    inputs["deleted_datetime"] = ""
     add_data(inputs)
     @message = "La nueva entrada de titulo #{params[:title]} fue creado exitosamente"
   else
-    update_data(params["id"], inputs)
+    update_data(params["id"], inputs["title"], inputs["content"])
     @message = "La entrada de titulo #{params[:title]} fue actualizado exitosamente"
   end
   @data = list_daily

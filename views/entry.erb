@@ -14,20 +14,27 @@ require "date"
             style="width:60%;margin-right:100px; font-family: 'Margarine', cursive;"
             value="<%=@entry_json["title"] if @entry_json%>"
           />
+          <% if @entry_json %>
+          <label>
+          <%=DateTime.parse(@entry_json["datetime"]).strftime("%Y-%m-%d %H:%M:%S")%>
+          </label>
+          <%else%>
           <label
             ><input
               type="date"
               class="form-control"
               name="date"
               style="width:150px; font-family: 'Questrial', serif;"
-              value="<%= DateTime.parse(@entry_json["datetime"]).strftime("%Y-%m-%d") if @entry_json%>"
+              value="<%= Time.now.strftime("%Y-%m-%d") %>"
               /><input
               type="time"
               class="form-control"
               name="time"
               style="width:100px; font-family: 'Questrial', serif;"
-              value="<%= DateTime.parse(@entry_json["datetime"]).strftime("%H:%M") if @entry_json%>"
+              value="<%= Time.now.strftime("%H:%M") %>"
           /></label>
+          <%end %>
+          
         </div>
       </div>
     </div>

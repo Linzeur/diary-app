@@ -29,24 +29,20 @@ end
 
 def update_delete_data(id, is_deleted)
   data_file = read_data
+  data_file[id]["is_deleted"] = is_deleted
   if is_deleted==1
-    data_file[id]["is_deleted"] = is_deleted
     data_file[id]["deleted_datetime"] = Time.now.strftime("%Y%m%d%H%M%S")
   else
-    data_file[id]["is_deleted"] = is_deleted
     data_file[id]["deleted_datetime"] = ""
   end
-  File.open($path_data, "w+") do |file|
-    file.write data_file.to_json
-  end
+  save_data(data_file)
 end
 
 def update_highlight_data(params)
     data_file = read_data
-    params["flag"].to_i == 0 ? data_file[params["id"]]["highlight"] = 1 : data_file[params["id"]]["highlight"] = 0
-    File.open($path_data, "w+") do |file|
-    file.write data_file.to_json
-    end
+    data_file[params["id"]]["highlight"] = 0
+    data_file[params["id"]]["highlight"] = 1 if params["flag"].to_i == 0
+    save_data(data_file)
 end
 
 

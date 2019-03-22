@@ -2,7 +2,6 @@ require "sinatra"
 require "sinatra/reloader"
 require "sinatra/content_for"
 require "erb"
-require "./controller/entry_methods"
 require "./controller/list_methods"
 
 set :port,8000
@@ -25,17 +24,10 @@ end
 # end
 
 post '/' do
-  inputs = Hash.new
-  inputs["title"] = params["title"]
-  inputs["datetime"] = params["date"] + " " + params["time"]
-  inputs["content"] = params["content"]
-  inputs["content_before"] = [] 
-  inputs["highlight"] = 0
-  inputs["is_deleted"] = 0
-  inputs["deleted_datetime"] = ""
-  add_data(inputs)
-  @message = "La nueva entrada de titulo #{params[:title]} fue creado exitosamente"
+  @message = validate_new_or_update_data(params) 
+  @data = list_daily
   erb :list
+  erb :list_entry
   erb :success
 
 end
@@ -43,7 +35,7 @@ get "/photo" do
   @data = list_daily
   erb :list
   erb :add_photo
-  erb :entry
+  erb :list_photos
 end
 
 
@@ -60,5 +52,9 @@ get "/delete" do
 end
 
 get "/edit" do
-  # TODO: Add edit logic
+  @entry_json = recover_element(params["id"])
+  @data = list_daily
+  erb :list
+  erb :list_entry
+  erb :entry
 end

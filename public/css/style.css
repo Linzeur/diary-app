@@ -58,7 +58,6 @@ textarea {
 .content-body p {
   margin: 0;
 }
-<<<<<<< HEAD
 
 .container {
   display: flex;
@@ -71,7 +70,8 @@ textarea {
   object-fit: cover;
   padding: 15px;
   border: 1px solid black;
-=======
+}
+
 .overflow {
   width: 16em;
 }
@@ -92,5 +92,4 @@ textarea {
 .menu:hover {
   text-decoration: none;
   color: black;
->>>>>>> master
 }

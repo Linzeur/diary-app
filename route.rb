@@ -13,6 +13,21 @@ get "/" do
   erb :daily
 end
 
+post '/' do 
+  #save_workshop(params["title"], params["content"])
+  inputs = Hash.new 
+  inputs["title"] = params["title"]
+  inputs["datetime"] = params["date"] + params["time"]
+  inputs["content"] = params["content"]
+  inputs["content_before"] = [] 
+  inputs["highlight"] = 0
+  inputs["is_deleted"] = 0
+  inputs["deleted_datetime"] = ""
+  @message = "La nueva entrada de titulo #{params[:title]} fue creado exitosamente"
+  erb :list
+  erb :success
+
+end
 get "/photo" do
   @data = list_daily
   erb :list

@@ -12,7 +12,7 @@ get "/" do
   @data = list_daily
   erb :list
   erb :list_entry
-  erb :daily
+  erb :entry
 end
 
 # post "/prueba" do
@@ -27,13 +27,13 @@ end
 post '/' do
   inputs = Hash.new
   inputs["title"] = params["title"]
-  inputs["datetime"] = params["date"] + params["time"]
+  inputs["datetime"] = params["date"] + " " + params["time"]
   inputs["content"] = params["content"]
   inputs["content_before"] = [] 
   inputs["highlight"] = 0
   inputs["is_deleted"] = 0
   inputs["deleted_datetime"] = ""
-  save_data(inputs)
+  add_data(inputs)
   @message = "La nueva entrada de titulo #{params[:title]} fue creado exitosamente"
   erb :list
   erb :success
@@ -43,7 +43,7 @@ get "/photo" do
   @data = list_daily
   erb :list
   erb :add_photo
-  erb :daily
+  erb :entry
 end
 
 

@@ -25,6 +25,7 @@ end
 # end
 
 post '/' do
+  puts params
   inputs = Hash.new
   inputs["title"] = params["title"]
   inputs["datetime"] = params["date"] + " " + params["time"]
@@ -33,9 +34,16 @@ post '/' do
   inputs["highlight"] = 0
   inputs["is_deleted"] = 0
   inputs["deleted_datetime"] = ""
-  add_data(inputs)
-  @message = "La nueva entrada de titulo #{params[:title]} fue creado exitosamente"
+  unless params.has_key?("id")
+    add_data(inputs)
+    @message = "La nueva entrada de titulo #{params[:title]} fue creado exitosamente"
+  else
+    update_data(params["id"], inputs)
+    @message = "La entrada de titulo #{params[:title]} fue actualizado exitosamente"
+  end
+  @data = list_daily
   erb :list
+  erb :list_entry
   erb :success
 
 end
@@ -60,5 +68,11 @@ get "/delete" do
 end
 
 get "/edit" do
-  # TODO: Add edit logic
+  id = params["id"]
+  data_file = read_data
+  @entry_json = data_file[id]
+  @data = list_daily
+  erb :list
+  erb :list_entry
+  erb :entry
 end

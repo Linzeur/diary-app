@@ -11,14 +11,14 @@ def read_data
 end
 
 def save_data(id, entry)
-  data[id] = entry
+  data_file = read_data
+  data_file[id] = entry
   File.open($path_data, "w+") do |file|
-    file.write data.to_json
+    file.write data_file.to_json
   end
 end
 
 def add_data(entry)
-  data_file = read_data
   identifier = Time.now.getutc.to_i
   entry["datetime"] = DateTime.parse(entry["datetime"]).strftime("%Y%m%d%H%M%S")
   entry["id"] = identifier
@@ -26,6 +26,5 @@ def add_data(entry)
 end
 
 def update_data(id, entry)
-  data_file = read_data
   save_data(id, entry)
 end

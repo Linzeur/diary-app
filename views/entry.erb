@@ -13,6 +13,7 @@ require "date"
             maxlength="80"
             style="width:60%;margin-right:100px; font-family: 'Margarine', cursive;"
             value="<%=@entry_json["title"] if @entry_json%>"
+            required
           />
           <label>
           <% if @entry_json %>
@@ -22,15 +23,21 @@ require "date"
               type="date"
               class="form-control"
               name="date"
-              style="width:150px; font-family: 'Questrial', serif;"
+              style="width:160px; font-family: 'Questrial', serif;"
               value="<%= Time.now.strftime("%Y-%m-%d") %>"
+              required
               /><input
               type="time"
               class="form-control"
               name="time"
-              style="width:100px; font-family: 'Questrial', serif;"
+              style="width:160px; font-family: 'Questrial', serif;"
               value="<%= Time.now.strftime("%H:%M") %>"
+<<<<<<< HEAD
+              required
+          /></label>
+=======
           />
+>>>>>>> master
           <%end %>
           <button type="button" class="btn btn-<%= (@entry_json == nil || @entry_json["highlight"] == 0) ? 'default' : 'warning' %>" btn-sm form-control" title="Highligth" style="width:50px;margin-left: 45px">
             <span
@@ -50,6 +57,7 @@ require "date"
           style="width:100%;height:300px"
           placeholder="What happened today?"
           name="content"
+          required
         ><%= @entry_json["content"] if @entry_json%></textarea>
         <br /><br />
         <div style="text-align: right">
@@ -58,7 +66,7 @@ require "date"
             value="SAVE"
             style="width: 20%; font-size: large; background-color: orange;
             color: white;margin-bottom: 20px; border: outset;
-            font-family: 'Questrial', sans-serif;"
+            font-family: 'Questrial', sans-serif"
           />
         </div>
       </div>

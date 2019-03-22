@@ -44,9 +44,9 @@ def update_delete_data(id, is_deleted)
   end
 end
 
-def update_highlight_data(id, highlight_flag)
+def update_highlight_data(params)
     data_file = read_data
-    data_file[id]["highlight"] = highlight_flag
+    params["flag"].to_i == 0 ? data_file[params["id"]]["highlight"] = 1 : data_file[params["id"]]["highlight"] = 0
     File.open($path_data, "w+") do |file|
     file.write data_file.to_json
     end

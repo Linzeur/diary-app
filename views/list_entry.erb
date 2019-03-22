@@ -1,5 +1,6 @@
 <% content_for :list_entry do %>
 <div class="row">
+<<<<<<< HEAD
   <div class="col-sm-12">
       <div class="card-list">
         <a href="/add-entry">
@@ -44,13 +45,93 @@
           </a>
           <a href="/delete?id=<%= daily["id"] %>">
             <button type="button" class="btn btn-default btn-sm" title="Borrar">
+=======
+  <% if @url == "/" || @url == "/trash" %>
+    <% if @url == "/" %>
+      <div class="col-sm-12">
+        <div class="card-list">
+          <a href="/add-entry">
+            <button type="button" class="btn btn-default btn-sm" title="Agregar">
+>>>>>>> master
               <span
-                class="glyphicon glyphicon-trash"
-                aria-hidden="true"
+                    class="glyphicon glyphicon-plus-sign"
+                    aria-hidden="true"
               ></span>
             </button>
           </a>
         </div>
+      </div>
+    <% end %>
+    <% @data.each do |daily| %>
+      <div class="col-sm-12">
+        <div class="card-list">
+          <% if @url == "/" %>
+            <a href="/highlight?id=<%= daily["id"] %>&flag=<%= daily["highlight"] %>"> 
+              <button type="button" class="btn btn-<%= daily["highlight"] == 0 ? "default" : "warning" %> btn-sm" tilte="Highlitgh">
+                  <span
+                    class="glyphicon glyphicon-<%= daily["highlight"] == 0 ? "star-empty" : "star" %>"
+                    aria-hidden="true"
+                  ></span>
+              </button>
+            </a>
+          <% end %>
+          <div style="padding: 0 20px;">
+            <h4><%= daily["title"] %> - <%= daily["datetime"] %> -</h4>
+            <p class="overflow ellipsis"><%= daily["content"] %></p>
+          </div>
+          <div>
+            <a href="/view?id=<%= daily["id"] %>">
+              <button type="button" class="btn btn-default btn-sm" title="Ver">
+                <span
+                    class="glyphicon glyphicon-eye-open"
+                    aria-hidden="true"
+                ></span>
+              </button>
+            </a>
+            <% if @url == "/" %>
+              <a href="/edit?id=<%= daily["id"] %>">
+                <button type="button" class="btn btn-default btn-sm" title="Editar">
+                  <span
+                    class="glyphicon glyphicon-pencil"
+                    aria-hidden="true"
+                  ></span>
+                </button>
+              </a>
+              <a href="/delete?id=<%= daily["id"] %>">
+                <button type="button" class="btn btn-default btn-sm" title="Borrar">
+                  <span
+                    class="glyphicon glyphicon-trash"
+                    aria-hidden="true"
+                  ></span>
+                </button>
+              </a>
+            <% end %>
+            <% if @url == "/trash" %>
+              <a href="/restore?id=<%= daily["id"] %>">
+                <button type="button" class="btn btn-default btn-sm" title="Restaurar">
+                  <span
+                    class="glyphicon glyphicon-refresh"
+                    aria-hidden="true"
+                  ></span>
+                </button>
+              </a>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+  <% if @url == "/photo" %>
+    <div class="col-sm-12">
+      <div class="card-list">
+        <a href="/add-photo">
+          <div class="input-group">
+            <input type="text" class="form-control" placeholder="URL . . .">
+            <span class="input-group-btn">
+              <button class="btn btn-default" type="button">Subir!</button>
+            </span>
+          </div>
+        </a>
       </div>
     </div>
   <% end %>

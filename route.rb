@@ -9,6 +9,7 @@ set :port,8001
 
 #puts read_data
 get "/" do
+  @url = "/"
   @data = list_daily
   erb :list
   erb :list_entry
@@ -33,21 +34,21 @@ post '/' do
 end
 
 get "/photo" do
+  @url = "/photo"
   @data = list_daily
   erb :list
-  erb :add_photo
+  erb :list_entry
   erb :list_photos
 end
 
 get "/add-entry" do
   @data = list_daily
-  # TODO: Add new entry
   erb :list
   erb :list_entry
 end
 
 get "/delete" do
-  # TODO: Add delete logic
+  update_delete_data(params["id"] , 1)
   redirect "/"
 end
 
@@ -65,4 +66,22 @@ get "/view" do
   erb :list
   erb :list_entry
   erb :view
+end
+
+get "/highlight" do
+  update_highlight_data(params)
+  redirect "/"
+end
+
+get "/trash" do
+  @url = "/trash"
+  @data = list_entry_trash
+  erb :list
+  erb :list_entry
+  erb :entry
+end
+
+get "/restore" do
+  update_delete_data(params["id"] , 0)
+  redirect "/trash"
 end

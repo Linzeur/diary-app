@@ -1,12 +1,13 @@
 body {
   /* background-image: url("/img/bg.jpg"); */
-  background-color: #eaeaea;
+  background-color: #e67e22;
 }
 textarea {
   resize: none;
 }
+
 .body-daily {
-  margin: 5%;
+  margin: 4%;
 }
 .title-option {
   padding: 0;
@@ -18,6 +19,7 @@ textarea {
   cursor: pointer;
   border-bottom: 2px black solid;
 }
+
 .card-shadow {
   background-color: #fff;
   -webkit-box-shadow: 4px 4px 9px 0px rgba(102, 102, 102, 1);

@@ -1,5 +1,5 @@
 require "date"
-<% content_for :entry do %>
+<% content_for :view do %>
 <form action="/<%="?id=" + @entry_json["id"] if @entry_json%>" method="post">
   <div class="card-block card-shadow">
     <div class="row content">
@@ -14,11 +14,13 @@ require "date"
             style="width:60%;margin-right:100px; font-family: 'Margarine', cursive;"
             value="<%=@entry_json["title"] if @entry_json%>"
           />
-          <label>
           <% if @entry_json %>
+          <label>
           <%=DateTime.parse(@entry_json["datetime"]).strftime("%Y-%m-%d %H:%M:%S")%>
+          </label>
           <%else%>
-            <input
+          <label
+            ><input
               type="date"
               class="form-control"
               name="date"
@@ -30,15 +32,9 @@ require "date"
               name="time"
               style="width:100px; font-family: 'Questrial', serif;"
               value="<%= Time.now.strftime("%H:%M") %>"
-          />
+          /></label>
           <%end %>
-          <button type="button" class="btn btn-<%= (@entry_json == nil || @entry_json["highlight"] == 0) ? 'default' : 'warning' %>" btn-sm form-control" title="Highligth" style="width:50px;margin-left: 45px">
-            <span
-              class="glyphicon glyphicon-star<%="-empty" if @entry_json == nil || @entry_json["highlight"] == 0 %>"
-              aria-hidden="true"
-            ></span>
-          </button>
-        </label>
+          
         </div>
       </div>
     </div>

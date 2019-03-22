@@ -5,7 +5,7 @@ require "erb"
 require "./controller/entry_methods"
 require "./controller/list_methods"
 
-set :port,8000
+set :port,8001
 
 #puts read_data
 get "/" do

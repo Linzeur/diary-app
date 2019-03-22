@@ -4,6 +4,7 @@ body {
 }
 textarea {
   resize: none;
+  font-family: "Roboto Mono", monospace;
 }
 .body-daily {
   margin: 5%;
@@ -32,6 +33,7 @@ textarea {
   display: flex;
   justify-content: space-around;
   align-items: center;
+  font-family: "Margarine", cursive;
 }
 .card-list:hover {
   -webkit-box-shadow: 4px 4px 9px 0px rgba(102, 102, 102, 1);
@@ -92,4 +94,5 @@ textarea {
 .menu:hover {
   text-decoration: none;
   color: black;
+  font-family: "Cormorant", sans-serif;
 }

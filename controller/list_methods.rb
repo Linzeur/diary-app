@@ -19,7 +19,7 @@ end
 def list_entry_trash
   list = []
   data = read_data
-  now_date = DateTimbe.now()
+  now_date = DateTime.now()
   data.each do |val|
     val[1]["datetime"] = DateTime.parse(val[1]["datetime"]).strftime("%d-%m-%Y %H:%M:%S")
     if val[1]["is_deleted"] == 1

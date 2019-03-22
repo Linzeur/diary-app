@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col-sm-4">
         <a class="menu" href="/">
-          <p class="title-option <%= "select" if @url == "/" %>">Daily</p>
+          <p class="title-option <%= "select" if @url == "/" || @url == "/edit" %>">Daily</p>
         </a>
       </div>
       <div class="col-sm-4">

@@ -54,6 +54,7 @@ get "/delete" do
 end
 
 get "/edit" do
+  @url = "/edit" 
   @entry_json = recover_element(params["id"])
   @data = list_daily
   erb :list

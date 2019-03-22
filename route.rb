@@ -2,16 +2,27 @@ require "sinatra"
 require "sinatra/reloader"
 require "sinatra/content_for"
 require "erb"
-require "./controller/list_methods.rb"
+require "./controller/entry_methods"
+require "./controller/list_methods"
 
-set :port,8001
+set :port,8000
 
+#puts read_data
 get "/" do
   @data = list_daily
   erb :list
   erb :list_entry
   erb :daily
 end
+
+# post "/prueba" do
+#   puts params.to_s
+#   puts params[:archivo][:filename]
+#   File.open(params[:archivo][:filename], "wb") do |file|
+#     file.write params[:archivo][:tempfile].read
+#   end
+#   "Hola"
+# end
 
 post '/' do 
   # save_workshop(params["title"], params["content"])

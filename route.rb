@@ -24,12 +24,13 @@ end
 #   "Hola"
 # end
 
+# It saved for POST
 post '/' do
   @message = validate_new_or_update_data(params) 
   @data = list_daily
   erb :list
   erb :list_entry
-  erb :success
+  redirect "/"
 end
 
 get "/photo" do

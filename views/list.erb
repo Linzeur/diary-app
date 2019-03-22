@@ -1,18 +1,22 @@
 <% content_for :list do %>
   <div class="card-block card-shadow">
     <div class="row">
-      <div class="col-sm-6">
+      <div class="col-sm-4">
         <a class="menu" href="/">
-          <p class="title-option <%= "select" if content_for?(:list_entry) %>">Daily</p>
+          <p class="title-option <%= "select" if @url == "/" %>">Daily</p>
         </a>
       </div>
-      <div class="col-sm-6">
+      <div class="col-sm-4">
         <a class="menu" href="/photo">
-          <p class="title-option <%= "select" if content_for?(:add_photo) %>">Photo</p>
+          <p class="title-option <%= "select" if  @url == "/photo" %>">Photo</p>
+        </a>
+      </div>
+      <div class="col-sm-4">
+        <a class="menu" href="/trash">
+          <p class="title-option <%= "select" if @url == "/trash" %>">Trash</p>
         </a>
       </div>
     </div>
-    <%= yield_content :add_photo if content_for?(:add_photo) %>
     <%= yield_content :list_entry if content_for?(:list_entry) %>
   </div>
 <% end %>

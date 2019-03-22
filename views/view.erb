@@ -26,13 +26,16 @@ require "date"
               name="date"
               style="width:150px; font-family: 'Questrial', serif;"
               value="<%= Time.now.strftime("%Y-%m-%d") %>"
+              <%= "disabled" if @url == "/view" %>
               /><input
               type="time"
               class="form-control"
               name="time"
               style="width:100px; font-family: 'Questrial', serif;"
               value="<%= Time.now.strftime("%H:%M") %>"
-          /></label>
+              <%= "disabled" if @url == "/view" %>
+              />
+          </label>
           <%end %>
           
         </div>

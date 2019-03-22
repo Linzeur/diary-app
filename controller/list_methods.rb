@@ -45,12 +45,9 @@ def validate_new_or_update_data(parameters)
     inputs["is_deleted"] = 0
     inputs["deleted_datetime"] = ""
     add_data(inputs)
-    msg = "La nueva entrada de titulo #{inputs["title"]} fue creado exitosamente"
   else
     update_data(parameters[:id], inputs["title"], inputs["content"])
-    msg = "La entrada de titulo #{inputs["title"]} fue actualizado exitosamente"
   end
-  msg
 end
 
 def recover_element(id)

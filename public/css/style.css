@@ -56,3 +56,16 @@ body {
 .content-body p {
   margin: 0;
 }
+
+.container {
+  display: flex;
+  flex-wrap: wrap-reverse;
+}
+
+.item {
+  width: 230px;
+  height: 200px;
+  object-fit: cover;
+  padding: 15px;
+  border: 1px solid black;
+}

@@ -33,7 +33,8 @@
             </div>
             <div class="col-sm-8">
             <!-- Daily -->
-              <%= yield_content :daily %>
+              <%= yield_content :entry if content_for?(:entry) %>
+              <%= yield_content :list_photos if content_for?(:list_photos) %>
             </div>
           </div>
         </div>

@@ -1,4 +1,4 @@
-<% content_for :daily do %>
+<% content_for :entry do %>
   <div class="card-block card-shadow">
     <div class="row content">
       <div class="col-sm-9">
@@ -18,10 +18,10 @@
     <div class="row content">
       <div class="col-sm-12">
         <div class="input-group">
-          <input type="text" class="form-control" placeholder="URL . . .">
-          <span class="input-group-btn">
-            <button class="btn btn-default" type="button">Subir!</button>
-          </span>
+          <form method="POST" action="/prueba" enctype="multipart/form-data">
+            <input type="file" name="archivo">
+            <button type="submit">Prueba</button>
+          </form>
         </div>
       </div>
     </div>

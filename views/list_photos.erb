@@ -1,0 +1,11 @@
+<% content_for :list_photos do %>
+  <div class="card-block card-shadow">
+    <div class="content container" style="width:100%">
+      <%Dir["./public/upload/*"].each do |img|%>
+      <div>
+        <img class="item" src="<%=img.gsub("./public","")%>" >
+      </div>
+      <%end%>
+    </div>
+  </div>
+<% end %>

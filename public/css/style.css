@@ -1,12 +1,14 @@
 body {
   /* background-image: url("/img/bg.jpg"); */
-  background-color: #eaeaea;
+  background-color: #e67e22;
 }
 textarea {
   resize: none;
+  font-family: "Roboto Mono", monospace;
 }
+
 .body-daily {
-  margin: 5%;
+  margin: 4%;
 }
 .title-option {
   padding: 0;
@@ -18,6 +20,7 @@ textarea {
   cursor: pointer;
   border-bottom: 2px black solid;
 }
+
 .card-shadow {
   background-color: #fff;
   -webkit-box-shadow: 4px 4px 9px 0px rgba(102, 102, 102, 1);
@@ -32,6 +35,7 @@ textarea {
   display: flex;
   justify-content: space-around;
   align-items: center;
+  font-family: "Margarine", cursive;
 }
 .card-list:hover {
   -webkit-box-shadow: 4px 4px 9px 0px rgba(102, 102, 102, 1);
@@ -50,11 +54,13 @@ textarea {
 .content {
   padding: 5px 20px;
 }
+
 .content-body {
   padding: 10px 7px;
   background-color: #eaeaea;
   border-radius: 5px;
 }
+
 .content-body p {
   margin: 0;
 }
@@ -75,6 +81,7 @@ textarea {
 .overflow {
   width: 16em;
 }
+
 .ellipsis {
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -92,4 +99,8 @@ textarea {
 .menu:hover {
   text-decoration: none;
   color: black;
+  font-family: "Cormorant", sans-serif;
+}
+.form-control {
+  padding: 0px 10px;
 }

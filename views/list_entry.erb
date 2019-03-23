@@ -1,6 +1,7 @@
-<% content_for :list_entry do %> <div class="row">
-  <% if @url == "/" || @url == "/trash" %>
-    <% if @url == "/" %>
+<% content_for :list_entry do %>
+<div class="row">
+  <% if @url == "/" || @url == "/trash" || @url == "/edit" || @url == "/view" %>
+    <% if @url == "/" || @url == "/edit" || @url == "/view" %>
       <div class="col-sm-12">
         <div class="card-list">
           <a href="/add-entry">
@@ -17,7 +18,7 @@
     <% @data.each do |daily| %>
       <div class="col-sm-12">
         <div class="card-list">
-          <% if @url == "/" %>
+          <% if @url == "/" || @url == "/edit" || @url == "/view" %>
             <a href="/highlight?id=<%= daily["id"] %>&flag=<%= daily["highlight"] %>"> 
               <button type="button" class="btn btn-<%= daily["highlight"] == 0 ? "default" : "warning" %> btn-sm" tilte="Highlitgh">
                   <span
@@ -40,7 +41,7 @@
                 ></span>
               </button>
             </a>
-            <% if @url == "/" %>
+            <% if @url == "/" || @url == "/edit" || @url == "/view"%>
               <a href="/edit?id=<%= daily["id"] %>">
                 <button type="button" class="btn btn-default btn-sm" title="Editar">
                   <span

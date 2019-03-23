@@ -1,6 +1,6 @@
 body {
   /* background-image: url("/img/bg.jpg"); */
-  background-color: #e67e22;
+  background-color: #4cd137;
 }
 textarea {
   resize: none;
@@ -22,16 +22,16 @@ textarea {
 }
 
 .card-shadow {
-  background-color: #fff;
+  background-color: rgb(223, 227, 230);
   -webkit-box-shadow: 4px 4px 9px 0px rgba(102, 102, 102, 1);
   -moz-box-shadow: 4px 4px 9px 0px rgba(102, 102, 102, 1);
   box-shadow: 4px 4px 9px 0px rgba(102, 102, 102, 1);
 }
 .card-list {
-  background-color: #eaeaea;
-  border-radius: 5px;
-  margin: 10px 5px;
-  padding: 5px;
+  background-color: white;
+  border-radius: 10px;
+  margin: 15px 3px;
+  padding: 10px;
   display: flex;
   justify-content: space-around;
   align-items: center;

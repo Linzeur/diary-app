@@ -11,13 +11,15 @@ require "date"
             placeholder="How would you name this story?"
             name="title"
             maxlength="80"
-            style="width:60%;margin-right:100px; font-family: 'Margarine', cursive;"
+            style="width:60%;margin-right:20px; font-family: 'Margarine', cursive;"
             value="<%=@entry_json["title"] if @entry_json%>"
             required
           />
           <label>
           <% if @entry_json %>
-          <%=DateTime.parse(@entry_json["datetime"]).strftime("%Y-%m-%d %H:%M:%S")%>
+            <label style="font-size:14px;height:34px;padding:6px;">
+              <%=DateTime.parse(@entry_json["datetime"]).strftime("%Y-%m-%d %H:%M:%S")%>
+            </label>
           <%else%>
             <input
               type="date"
@@ -31,17 +33,19 @@ require "date"
               class="form-control"
               name="time"
               style="width:160px; font-family: 'Questrial', serif;"
-              value="<%= Time.now.strftime("%H:%M") %>"
+              value="<%= Time.now.strftime("%H:%M:%S") %>"
               required
-          />
+            />
           <%end %>
-          <button type="button" class="btn btn-<%= (@entry_json == nil || @entry_json["highlight"] == 0) ? 'default' : 'warning' %>" btn-sm form-control" title="Highligth" style="width:50px;margin-left: 45px">
-            <span
-              class="glyphicon glyphicon-star<%="-empty" if @entry_json == nil || @entry_json["highlight"] == 0 %>"
-              aria-hidden="true"
-            ></span>
-          </button>
-        </label>
+            <button type="button"
+              class="btn btn-<%= (@entry_json == nil || @entry_json["highlight"] == 0) ? 'default' : 'warning' %> btn-sm"
+              title="Highligth" style="width:50px;margin-left: 45px">
+              <span
+                class="glyphicon glyphicon-star<%="-empty" if @entry_json == nil || @entry_json["highlight"] == 0 %>"
+                aria-hidden="true"
+              ></span>
+            </button>
+          <label>
         </div>
       </div>
     </div>
@@ -59,7 +63,7 @@ require "date"
         <div style="text-align: right">
           <input
             type="submit"
-            value="SAVE"
+            value="SAVE STORY"
             style="width: 20%; font-size: large; background-color: orange;
             color: white;margin-bottom: 20px; border: outset;
             font-family: 'Questrial', sans-serif"

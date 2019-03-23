@@ -5,13 +5,11 @@ def list_daily
   list = []
   data = read_data
   data.each do |val|
-    val[1]["datetime"] = DateTime.parse(val[1]["datetime"]).strftime("%d-%m-%Y %H:%M:%S")
-    if val[1]["is_deleted"]==0
+    if val[1]["is_deleted"] == 0
       list.push(val[1])
     end
   end
-  list = list.sort_by{|value| value["datetime"].to_i}.reverse
-  list
+  list = sort_parse(list)
 end
 
 def list_entry_trash
@@ -19,7 +17,6 @@ def list_entry_trash
   data = read_data
   now_date = DateTime.now()
   data.each do |val|
-    val[1]["datetime"] = DateTime.parse(val[1]["datetime"]).strftime("%d-%m-%Y %H:%M:%S")
     if val[1]["is_deleted"] == 1
       temp_datetime = DateTime.parse(val[1]["deleted_datetime"])
       if ( (now_date - temp_datetime) < 1  )
@@ -27,8 +24,14 @@ def list_entry_trash
       end
     end
   end
+  list = sort_parse(list)
+end
+
+def sort_parse(list)
   list = list.sort_by{|value| value["datetime"].to_i}.reverse
-  list
+  list.each do |val|
+    val["datetime"] = DateTime.parse(val["datetime"]).strftime("%d-%m-%Y %H:%M:%S")
+  end
 end
 
 def validate_new_or_update_data(parameters)

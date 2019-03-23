@@ -31,7 +31,9 @@ def sort_parse(list)
   list = list.sort_by{|value| value["datetime"].to_i}.reverse
   list.each do |val|
     val["datetime"] = DateTime.parse(val["datetime"]).strftime("%d-%m-%Y %H:%M:%S")
+    val["content"] = val["content"].gsub!(/(<|>)/,{"<"=>"&lt;",">"=>"&gt;"})
   end
+  list
 end
 
 def validate_new_or_update_data(parameters)

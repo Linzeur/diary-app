@@ -22,9 +22,10 @@
                   </button>
                 </a>
               <% end %>
-              <div style="padding: 0 20px;">
-                <h4><%= daily["title"] %> - <%= daily["datetime"] %> -</h4>
-                <p class="overflow ellipsis"><%= daily["content"] %></p>
+              <div class="entry">
+                <h4><%= daily["title"] %></h4>
+                <span><%= daily["datetime"] %></span>
+                <div class="overflow ellipsis"><%= daily["content"] %></div>
               </div>
               <div>
                 <a href="/view?id=<%= daily["id"] %>">

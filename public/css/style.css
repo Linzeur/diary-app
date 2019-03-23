@@ -122,3 +122,12 @@ textarea {
   background-color: #000;
   border: 50% solid #666;
 }
+.entry {
+  padding: 0 20px;
+}
+.entry span {
+  color: #666;
+}
+.entry div {
+  font-size: 11px;
+}

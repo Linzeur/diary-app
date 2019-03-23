@@ -63,6 +63,7 @@ get "/edit" do
 end
 
 get "/view" do
+  @url = "/view"
   @entry_json = recover_element(params["id"])
   @data = list_daily
   erb :list

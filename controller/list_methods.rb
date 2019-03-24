@@ -58,6 +58,7 @@ def recover_element(id)
   data_file = read_data
   val = data_file[id]
   val["datetime"] = DateTime.parse(val["datetime"]).strftime("%d-%m-%Y %H:%M:%S")
+  val["content"] = val["content"].gsub(/(\r\n)/,{"\r\n"=>"<br/>"})
   val = Hash.new if val["is_deleted"] == 1 && (DateTime.now - DateTime.parse(val["deleted_datetime"]) >= 1)
   val
 end

@@ -7,12 +7,9 @@ require_relative "./controller/list_methods"
 set :port,8000
 enable :sessions
 
-# Initialize session variables
-
-
 get "/" do
-  @url = "/"
   session[:search] = "" unless session[:search]
+  @url = "/"
   params["search"] = session[:search]
   @data = search(params["search"])
   erb :list
@@ -21,9 +18,11 @@ get "/" do
 end
 
 get "/edit" do
+  session[:search] = "" unless session[:search]
   @url = "/edit" 
   @entry_json = recover_element(params["id"])
-  @data = list_daily
+  params["search"] = session[:search]
+  @data = search(params["search"])
   erb :list
   erb :list_entry
   erb :entry
@@ -35,6 +34,7 @@ get "/view" do
     @url = "/trash"
     @data = list_entry_trash
   else
+    session[:search] = "" unless session[:search]
     @url = "/"
     params["search"] = session[:search]
     @data = search(params["search"])

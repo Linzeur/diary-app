@@ -1,7 +1,7 @@
 <% content_for :list_entry do %>
 <div class="row">
   <div class="scrollbar style-scroll">
-    <% if @url == "/" || @url == "/trash" || @url == "/edit" %>
+    <% if @url == "/" || @url == "/trash" || @url == "/edit" || @url == "/search" %>
       <% if @data.empty? %>
         <div class="col-sm-12">
           <div class="card-list">
@@ -12,7 +12,7 @@
         <% @data.each do |daily| %>
           <div class="col-sm-12">
             <div class="card-list">
-              <% if @url == "/" || @url == "/edit" %>
+              <% if @url == "/" || @url == "/edit" || @url == "/search" %>
                 <a href="/highlight?id=<%= daily["id"] %>&flag=<%= daily["highlight"] %>"> 
                   <button type="button" class="btn btn-<%= daily["highlight"] == 0 ? "default" : "warning" %> btn-sm" tilte="Highlitgh">
                       <span
@@ -36,7 +36,7 @@
                     ></span>
                   </button>
                 </a>
-                <% if @url == "/" || @url == "/edit" %>
+                <% if @url == "/" || @url == "/edit" || @url == "/search" %>
                   <a href="/edit?id=<%= daily["id"] %>">
                     <button type="button" class="btn btn-default btn-sm" title="Editar">
                       <span

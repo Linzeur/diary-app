@@ -17,6 +17,22 @@
         </a>
       </div>
     </div>
+    <% if @url == ( "/" || "/edit" ) %>
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="card-list">
+          <a href="/add-entry">
+            <button type="button" class="btn btn-default btn-sm" title="Agregar">
+              <span
+                    class="glyphicon glyphicon-plus-sign"
+                    aria-hidden="true"
+              ></span>
+            </button>
+          </a>
+        </div>
+      </div>
+    </div>
+    <% end %>
     <%= yield_content :list_entry if content_for?(:list_entry) %>
   </div>
 <% end %>

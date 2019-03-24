@@ -5,19 +5,19 @@
 <% end %>
 
 <div class="row">
-  <div class="scrollbar style-scroll">
-    <% if @url == "/" || @url == "/trash" || @url == "/edit" || @url == "/search" %>
+  <div class="scrollbar style-scroll" <%= "style=\"height:481px\"" if @url == "/trash"%>>
+    <% unless @url == "/photo"%>
       <% if @data.empty? %>
         <div class="col-sm-12">
           <div class="card-list">
-            <h3> Sin elementos </h3>
+            <h3> There are no entries </h3>
           </div>
         </div>
       <% else %>
         <% @data.each do |daily| %>
           <div class="col-sm-12">
             <div class="card-list">
-              <% if @url == "/" || @url == "/edit" || @url == "/search" %>
+              <% unless @url == "/trash"%>
                 <a href="/highlight?id=<%= daily["id"] %>&flag=<%= daily["highlight"] %>"> 
                   <button type="button" class="btn btn-<%= daily["highlight"] == 0 ? "default" : "warning" %> btn-sm" tilte="Highlitgh">
                       <span
@@ -28,22 +28,22 @@
                 </a>
               <% end %>
               <div class="entry">
+                <h6><%= daily["datetime"] %></h6>
                 <h4><%= daily["title"] %></h4>
-                <span><%= daily["datetime"] %></span>
-                <div class="overflow ellipsis"><%= daily["content"] %></div>
+                <p class="overflow ellipsis"><%= daily["content"] %></p>
               </div>
-              <div>
-                <a href="/view?id=<%= daily["id"] %>">
-                  <button type="button" class="btn btn-default btn-sm" title="Ver">
+              <div style="width:15%;text-align:center">
+                <a href="/view?id=<%= daily["id"] %><%= "&view=trash" if @url == "/trash"%>">
+                  <button type="button" class="btn btn-default btn-sm" title="View Entry">
                     <span
                         class="glyphicon glyphicon-eye-open"
                         aria-hidden="true"
                     ></span>
                   </button>
                 </a>
-                <% if @url == "/" || @url == "/edit" || @url == "/search" %>
+                <% unless @url == "/trash"%>
                   <a href="/edit?id=<%= daily["id"] %>">
-                    <button type="button" class="btn btn-default btn-sm" title="Editar">
+                    <button type="button" class="btn btn-default btn-sm" title="Edit Entry">
                       <span
                         class="glyphicon glyphicon-pencil"
                         aria-hidden="true"
@@ -51,17 +51,16 @@
                     </button>
                   </a>
                   <a href="/delete?id=<%= daily["id"] %>">
-                    <button type="button" class="btn btn-default btn-sm" title="Borrar">
+                    <button type="button" class="btn btn-default btn-sm" title="Delete Entry">
                       <span
                         class="glyphicon glyphicon-trash"
                         aria-hidden="true"
                       ></span>
                     </button>
                   </a>
-                <% end %>
-                <% if @url == "/trash" %>
+                <% else %>
                   <a href="/restore?id=<%= daily["id"] %>">
-                    <button type="button" class="btn btn-default btn-sm" title="Restaurar">
+                    <button type="button" class="btn btn-default btn-sm" title="Restore Entry">
                       <span
                         class="glyphicon glyphicon-refresh"
                         aria-hidden="true"
@@ -74,18 +73,18 @@
           </div>
         <% end %>
       <% end %>
-    <% end %>
-    <% if @url == "/photo" %>
+    <% else %>
       <div class="col-sm-12">
         <div class="card-list">
-          <a href="/add-photo">
-            <div class="input-group">
-              <input type="text" class="form-control" placeholder="URL . . .">
-              <span class="input-group-btn">
-                <button class="btn btn-default" type="button">Subir!</button>
+          <form action="/" method="post" enctype="multipart/form-data" style="width: 100%">
+            <div class="input-group" style="display:table;width: 100%">
+              <input type="file" accept="image/*" multiple="multiple" name="file[]" style="border: 1px solid #ccc;width: 100%" required/>
+              <br/>
+              <span class="input-group" style="text-align:right">
+                <button class="btn btn-default" type="submit">Upload Photos</button>
               </span>
             </div>
-          </a>
+          </form>
         </div>
       </div>
     <% end %>

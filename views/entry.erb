@@ -1,27 +1,25 @@
-require "date"
 <% content_for :entry do %>
 <form action="/<%="?id=" + @entry_json["id"] if @entry_json%>" method="post">
   <div class="card-block card-shadow">
     <div class="row content">
-      <div class="col-sm-9" style="padding-top: 25px" ;>
-        <div class="input-group" style="display: -webkit-box;">
-          <input 
+      <div class="col-sm-9" style="padding-top: 25px;width:100%" ;>
+        <div class="input-group" style="display: flex">
+          <input
             type="text"
             class="form-control"
             placeholder="How would you name this story?"
             name="title"
             maxlength="80"
-            style="width: 450px;
-            margin-right: 100px;
+            style="width:43%;
+            margin-right: 20px;
             font-family: 'Helvetica', cursive;
-            height: 50px;
-            font-size: large;"
+            font-size: 20px;"
             value="<%=@entry_json["title"] if @entry_json%>"
             required
           />
-          <label>
+          <div style="width:40%;text-align:center">
           <% if @entry_json %>
-          <%=DateTime.parse(@entry_json["datetime"]).strftime("%Y-%m-%d %H:%M:%S")%>
+            <label style="font-size:20px;margin-top:2px"><%=@entry_json["datetime"]%></label>
           <%else%>
             <input
               type="date"
@@ -35,23 +33,22 @@ require "date"
               name="time"
               value="<%= Time.now.strftime("%H:%M") %>"
               required
-          />
+            />
           <%end %>
-          <button type="button" class="btn btn-<%= (@entry_json == nil || @entry_json["highlight"] == 0) ? 'default' : 'warning' %>" btn-sm form-control" title="Highligth" style="width:50px;margin-left: -50px">
-            <span
-              class="glyphicon glyphicon-star<%="-empty" if @entry_json == nil || @entry_json["highlight"] == 0 %>"
-              aria-hidden="true"
-            ></span>
-          </button>
-        </label>
+          </div>
+          <div style="width:17%;justify-content:right;display:flex;font-size:20px">
+            <input type="checkbox" name="highlight" id="highlight_entry" <%="checked" if @entry_json != nil && @entry_json["highlight"] == 1 %>/>
+            <label for="highlight_entry" style="margin: auto 5px">Highlight it</label>
+          </div>
         </div>
       </div>
     </div>
     <div class="row content">
       <div class="col-sm-12">
         <br />
-        <%# I changed height of textarea for working  %>
-        <textarea class="textarea1"
+        <textarea
+          class="textarea1"
+          style="width:100%;height:340px; background:white"
           placeholder="What happened today?"
           name="content"
           required
@@ -61,7 +58,10 @@ require "date"
           <input
             class="input2"
             type="submit"
-            value="Save story"
+            value="Save Story"
+            <%# style="width: 20%; font-size: large; background-color: orange;
+            color: white;margin-bottom: 20px; border: outset;
+            font-family: 'Questrial', sans-serif" %>
           />
         </div>
       </div>

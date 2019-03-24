@@ -1,74 +1,33 @@
-require "date"
 <% content_for :view do %>
+  <div class="card-block card-shadow">
+    <div class="row content">
     <% if @entry_json.empty? %>
-      <div class="card-block card-shadow">
-        <div class="row content">
-        <p class="p1">Your story was deleted</p>
-        </div>
-      </div>
+      <p class="p1">Your story was deleted</p>
     <% else %>
-    <form action="/<%="?id=" + @entry_json["id"] if @entry_json%>" method="post">
-      <div class="card-block card-shadow">
-        <div class="row content">
-          <div class="col-sm-9" style="padding-top: 25px" ;>
-            <div class="input-group" style="display: -webkit-box;">
-              <input class="input1"
-                type="text"
-                class="form-control"
-                placeholder="How would you name this story?"
-                name="title"
-                maxlength="80"
-                value="<%=@entry_json["title"] if @entry_json%>"
-              />
-              <% if @entry_json %>
-              <label>
-              <%=DateTime.parse(@entry_json["datetime"]).strftime("%Y-%m-%d %H:%M:%S")%>
-              </label>
-              <%else%>
-              <label
-                ><input
-                  type="date"
-                  class="form-control"
-                  name="date"
-                  style="width:150px; font-family: 'Helvetica', serif;"
-                  value="<%= Time.now.strftime("%Y-%m-%d") %>"
-                  <%= "disabled" if @url == "/view" %>
-                  /><input
-                  type="time"
-                  class="form-control"
-                  name="time"
-                  style="width:100px; font-family: 'Helvetica', serif;"
-                  value="<%= Time.now.strftime("%H:%M") %>"
-                  <%= "disabled" if @url == "/view" %>
-                  />
-              </label>
-              <%end %>
-              
-            </div>
-          </div>
-        </div>
-        <div class="row content">
-          <div class="col-sm-12">
-            <br />
-            <textarea
-              class="form-control"
-              style="width:100%;height:300px"
-              placeholder="What happened today?"
-              name="content"
-            ><%= @entry_json["content"] if @entry_json%></textarea>
-            <br /><br />
-            <div style="text-align: right">
-              <input
-                type="submit"
-                value="SAVE"
-                style="width: 20%; font-size: large; background-color: orange;
-                color: white;margin-bottom: 20px; border: outset;
-                font-family: 'Helvetica', sans-serif;"
-              />
-            </div>
+      <div class="col-sm-9" style="padding-top: 25px;width:100%">
+        <div class="input-group" style="display:flex; font-family: 'Margarine', cursive;font-size:20px">
+          <div style="width:70%"><label><%=@entry_json["title"]%></label></div>
+          <div style="width:20%; text-align: center"><label><%=@entry_json["datetime"]%></label></div>
+          <div style="width:10%;justify-content:right;display:flex">
+            <button type="button"
+              class="btn btn-<%= (@entry_json["highlight"] == 0) ? 'default' : 'warning' %> btn-sm"
+              title="Highligth" style="width:50px" disabled>
+              <span
+                class="glyphicon glyphicon-star<%="-empty" if @entry_json["highlight"] == 0 %>"
+                aria-hidden="true"
+              ></span>
+            </button>
           </div>
         </div>
       </div>
-    </form>
-        <% end %>
+    </div>
+    <div class="row content">
+      <div class="col-sm-12">
+        <div class="scrollbar style-scroll" style="height:421px">
+          <br /><%= @entry_json["content"] if @entry_json%>
+        </div>
+      </div>
+    <% end %>
+    </div>
+  </div>
 <% end %>

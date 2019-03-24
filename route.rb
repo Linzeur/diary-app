@@ -5,10 +5,16 @@ require "erb"
 require "./controller/list_methods"
 
 set :port,8000
+enable :sessions
+
+# Initialize session variables
+
 
 get "/" do
   @url = "/"
-  @data = list_daily
+  session[:search] = "" unless session[:search]
+  params["search"] = session[:search]
+  @data = search(params["search"])
   erb :list
   erb :list_entry
   erb :entry
@@ -16,7 +22,7 @@ end
 
 get "/edit" do
   @url = "/edit" 
-  @entry_json = trash_element(params["id"])
+  @entry_json = recover_element(params["id"])
   @data = list_daily
   erb :list
   erb :list_entry
@@ -24,9 +30,15 @@ get "/edit" do
 end
 
 get "/view" do
-  @url = "/view"
-  @entry_json = trash_element(params["id"])
-  @data = list_daily
+  @entry_json = recover_element(params["id"])
+  if params.has_key?("view")
+    @url = "/trash"
+    @data = list_entry_trash
+  else
+    @url = "/"
+    params["search"] = session[:search]
+    @data = search(params["search"])
+  end
   erb :list
   erb :list_entry
   erb :view
@@ -44,9 +56,15 @@ post '/' do
   end
 end
 
+post "/search" do
+  session[:search] = params["search"]
+  redirect "/"
+end
+
 get "/photo" do
   @url = "/photo"
   @list_images = Dir["./public/upload/*"]
+  session[:search] = ""
   @data = list_daily
   erb :list
   erb :list_entry
@@ -65,6 +83,7 @@ end
 
 get "/trash" do
   @url = "/trash"
+  session[:search] = ""
   @data = list_entry_trash
   erb :list
   erb :list_entry
@@ -74,12 +93,4 @@ end
 get "/restore" do
   update_delete_data(params["id"] , 0)
   redirect "/trash"
-end
-
-post "/search" do
-  @url = "/search"
-  @data = search(params)
-  erb :list
-  erb :list_entry
-  erb :entry
 end

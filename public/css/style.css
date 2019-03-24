@@ -33,6 +33,7 @@ textarea {
   box-shadow: 4px 4px 9px 0px rgba(102, 102, 102, 1);
 }
 .card-list {
+  display: flex;
   background-color: white;
   border-radius: 10px;
   margin: 15px 20px;
@@ -93,7 +94,7 @@ textarea {
 }
 .select {
   color: white;
-  background-color: rgb(0, 221, 59);
+  background-color: black;
 }
 .select:hover {
   cursor: pointer;

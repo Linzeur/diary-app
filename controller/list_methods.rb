@@ -56,28 +56,19 @@ end
 
 def recover_element(id)
   data_file = read_data
-  data_file[id]["datetime"] = DateTime.parse(data_file[id]["datetime"]).strftime("%d-%m-%Y %H:%M:%S")
-  data_file[id]
+  val = data_file[id]
+  val["datetime"] = DateTime.parse(val["datetime"]).strftime("%d-%m-%Y %H:%M:%S")
+  val = Hash.new if val["is_deleted"] == 1 && (DateTime.now - DateTime.parse(val["deleted_datetime"]) >= 1)
+  val
 end
 
-def search(params)
+def search(searched)
   list, list_filter = [],[]
   list = list_daily
   list.each do |val|
-    list_filter.push(val)  if val["title"].include?(params["search"]) || val["content"].to_s.include?(params["search"])
+    list_filter.push(val)  if val["title"].include?(searched) || val["content"].to_s.include?(searched)
   end
   list_filter
-end
-
-def trash_element(id)
-  val=recover_element(id)
-  if val["is_deleted"] == 0
-    val
-  elsif  (DateTime.now() -  DateTime.parse(val["deleted_datetime"]) < 1)  
-    val
-  else
-    val={}
-  end
 end
 
 def save_files(files)

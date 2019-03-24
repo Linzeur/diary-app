@@ -20,10 +20,10 @@
     <% unless /^(\/photo|\/trash)$/ === @url %>
     <div class="row">
       <div class="col-sm-12">
-        <div class="card-list">
-          <form action="/search" method="post">
+        <div class="card-list" style="width:88%">
+          <form action="/search" method="post" style="width:100%">
             <div class="input-group">
-              <input type="text" name="search" class="form-control" placeholder="What do you want search?" value="<%= params["search"] %>"/>
+              <input type="text" name="search" class="form-control" placeholder="What entries do you want search?" value="<%= params["search"] %>"/>
               <div class="input-group-btn">
                   <button type="submit" class="btn btn-default" title="Search entries">
                     <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
@@ -36,7 +36,6 @@
               </div>
             </div>
           </form>
-          
         </div>
       </div>
     </div>

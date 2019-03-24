@@ -16,7 +16,7 @@ end
 
 get "/edit" do
   @url = "/edit" 
-  @entry_json = recover_element(params["id"])
+  @entry_json = trash_element(params["id"])
   @data = list_daily
   erb :list
   erb :list_entry
@@ -25,7 +25,7 @@ end
 
 get "/view" do
   @url = "/view"
-  @entry_json = recover_element(params["id"])
+  @entry_json = trash_element(params["id"])
   @data = list_daily
   erb :list
   erb :list_entry

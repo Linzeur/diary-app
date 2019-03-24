@@ -1,7 +1,9 @@
-require "date"
 <% content_for :view do %>
   <div class="card-block card-shadow">
     <div class="row content">
+    <% if @entry_json.empty? %>
+      <p class="p1">Your story was deleted</p>
+    <% else %>
       <div class="col-sm-9" style="padding-top: 25px;width:100%">
         <div class="input-group" style="display:flex; font-family: 'Margarine', cursive;font-size:20px">
           <div style="width:70%"><label><%=@entry_json["title"]%></label></div>
@@ -23,7 +25,7 @@ require "date"
       <div class="col-sm-12">
         <br /><%= @entry_json["content"] if @entry_json%>
       </div>
+    <% end %>
     </div>
   </div>
-</form>
 <% end %>

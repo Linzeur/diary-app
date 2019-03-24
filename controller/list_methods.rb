@@ -60,6 +60,15 @@ def recover_element(id)
   data_file[id]
 end
 
+def search(params)
+  list, list_filter = [],[]
+  list = list_daily
+  list.each do |val|
+    list_filter.push(val)  if val["title"].include?(params["search"]) || val["content"].to_s.include?(params["search"])
+  end
+  list_filter
+end
+
 def trash_element(id)
   val=recover_element(id)
   if val["is_deleted"] == 0

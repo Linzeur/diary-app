@@ -76,16 +76,10 @@ get "/restore" do
   redirect "/trash"
 end
 
-
-
-
-# post "/prueba" do
-#   puts params.to_s
-#   puts params[:archivo][:filename]
-#   File.open(params[:archivo][:filename], "wb") do |file|
-#     file.write params[:archivo][:tempfile].read
-#   end
-#   "Hola"
-# end
-
-# It saved for POST
+post "/search" do
+  @url = "/search"
+  @data = search(params)
+  erb :list
+  erb :list_entry
+  erb :entry
+end

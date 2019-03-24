@@ -65,3 +65,14 @@ def search(params)
   end
   list_filter
 end
+
+def trash_element(id)
+  val=recover_element(id)
+  if val["is_deleted"] == 0
+    val
+  elsif  (DateTime.now() -  DateTime.parse(val["deleted_datetime"]) < 1)  
+    val
+  else
+    val={}
+  end
+end

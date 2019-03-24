@@ -56,3 +56,17 @@ def recover_element(id)
   data_file = read_data
   data_file[id]
 end
+
+def trash_element(id)
+  val=recover_element(id)
+  if val["is_deleted"] == 0
+    val
+  elsif  (DateTime.now() -  DateTime.parse(val["deleted_datetime"]) < 1)  
+    val
+  else
+    val={}
+  end
+end
+
+
+

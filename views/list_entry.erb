@@ -23,11 +23,11 @@
                 </a>
               <% end %>
               <div class="entry">
+                <h6><%= daily["datetime"] %></h6>
                 <h4><%= daily["title"] %></h4>
-                <span><%= daily["datetime"] %></span>
                 <div class="overflow ellipsis"><%= daily["content"] %></div>
               </div>
-              <div>
+              <div style="width:15%;text-align:center">
                 <a href="/view?id=<%= daily["id"] %>">
                   <button type="button" class="btn btn-default btn-sm" title="Ver">
                     <span

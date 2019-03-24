@@ -134,6 +134,7 @@ textarea {
 }
 .entry {
   padding: 0 20px;
+  width: 85%;
 }
 .entry span {
   color: #666;

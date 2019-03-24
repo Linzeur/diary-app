@@ -73,7 +73,6 @@ def search(searched)
 end
 
 def save_files(files, url)
-  puts files
   list_new_images = "<br/><b>Estos son los links de las siguientes imagenes cargadas:</b><br/>"
   files.each.with_index do |file, index|
     filename = (Time.now.getutc.to_i + index).to_s + "." + file[:type].gsub("image/", "")

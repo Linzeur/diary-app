@@ -16,7 +16,7 @@ end
 def add_data(entry)
   data_file = read_data
   identifier = Time.now.getutc.to_i
-  entry["id"] = identifier
+  entry["id"] = identifier.to_s
   data_file[identifier] = entry
   save_data(data_file)
 end

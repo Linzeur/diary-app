@@ -39,7 +39,8 @@ def validate_new_or_update_data(parameters)
   inputs["title"] = parameters[:title]
   inputs["content"] = parameters[:content]
   unless parameters.has_key?("id")
-    inputs["datetime"] = DateTime.parse(parameters[:date] + " " + parameters[:time]).strftime("%Y%m%d%H%M%S")
+    date = parameters[:date] + " " + parameters[:time]
+    inputs["datetime"] = DateTime.parse(date).strftime("%Y%m%d%H%M%S")
     inputs["content_before"] = [] 
     inputs["highlight"] = 0
     inputs["is_deleted"] = 0
@@ -52,5 +53,6 @@ end
 
 def recover_element(id)
   data_file = read_data
+  data_file[id]["datetime"] = DateTime.parse(data_file[id]["datetime"]).strftime("%Y-%m-%d %H:%M:%S")
   data_file[id]
 end

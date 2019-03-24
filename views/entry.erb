@@ -1,25 +1,22 @@
-require "date"
 <% content_for :entry do %>
 <form action="/<%="?id=" + @entry_json["id"] if @entry_json%>" method="post">
   <div class="card-block card-shadow">
     <div class="row content">
-      <div class="col-sm-9" style="padding-top: 25px" ;>
-        <div class="input-group" style="display: -webkit-box;">
+      <div class="col-sm-9" style="padding-top: 25px;width:100%" ;>
+        <div class="input-group" style="display: flex">
           <input
             type="text"
             class="form-control"
             placeholder="How would you name this story?"
             name="title"
             maxlength="80"
-            style="width:60%;margin-right:20px; font-family: 'Margarine', cursive;"
+            style="width:50%;margin-right:20px; font-family: 'Margarine', cursive;"
             value="<%=@entry_json["title"] if @entry_json%>"
             required
           />
-          <label>
+          <div style="width:40%;text-align:center">
           <% if @entry_json %>
-            <label style="font-size:14px;height:34px;padding:6px;">
-              <%=DateTime.parse(@entry_json["datetime"]).strftime("%Y-%m-%d %H:%M:%S")%>
-            </label>
+            <label style="font-size:20px;margin-top:2px"><%=@entry_json["datetime"]%></label>
           <%else%>
             <input
               type="date"
@@ -37,15 +34,21 @@ require "date"
               required
             />
           <%end %>
+          </div>
+          <div style="width:10%;justify-content:right;display:flex">
+            <input type="checkbox" id="toggle"/>
             <button type="button"
               class="btn btn-<%= (@entry_json == nil || @entry_json["highlight"] == 0) ? 'default' : 'warning' %> btn-sm"
-              title="Highligth" style="width:50px;margin-left: 45px">
-              <span
-                class="glyphicon glyphicon-star<%="-empty" if @entry_json == nil || @entry_json["highlight"] == 0 %>"
+              title="Highligth" style="width:50px;" name="highlight">
+            <label id="label" for="toggle">
+              <%# <span id="switch"></span> %>
+              <span id="switch"
+                class="glyphicon glyphicon-star<%="-empty" if @entry_json == nil || @entry_json["highlight"] == 0  || params[:state] == "0"%>"
                 aria-hidden="true"
               ></span>
+            </label>
             </button>
-          <label>
+          </div>
         </div>
       </div>
     </div>

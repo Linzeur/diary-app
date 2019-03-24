@@ -5,7 +5,7 @@ require "date"
       <div class="col-sm-9" style="padding-top: 25px;width:100%">
         <div class="input-group" style="display:flex; font-family: 'Margarine', cursive;font-size:20px">
           <div style="width:70%"><label><%=@entry_json["title"]%></label></div>
-          <div style="width:20%; color:blue; text-align: center"><label><%=DateTime.parse(@entry_json["datetime"]).strftime("%Y-%m-%d %H:%M:%S")%></label></div>
+          <div style="width:20%; text-align: center"><label><%=@entry_json["datetime"]%></label></div>
           <div style="width:10%;justify-content:right;display:flex">
             <button type="button"
               class="btn btn-<%= (@entry_json["highlight"] == 0) ? 'default' : 'warning' %> btn-sm"

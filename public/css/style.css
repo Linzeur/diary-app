@@ -37,8 +37,6 @@ textarea {
   border-radius: 10px;
   margin: 15px 20px;
   padding: 10px;
-  display: flex;
-  justify-content: space-around;
   align-items: center;
   font-family: "Helvetica", serif;
   font-size: 15px;

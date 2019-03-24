@@ -2,8 +2,9 @@ require "sinatra"
 require "sinatra/reloader"
 require "sinatra/content_for"
 require "erb"
-require "./controller/entry_methods"
-require "./controller/list_methods"
+require_relative "./controller/entry_methods"
+require_relative "./controller/list_methods"
+
 
 set :port,8001
 

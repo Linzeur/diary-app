@@ -10,7 +10,7 @@
       <% else %>
         <%@list_images.sort.reverse.each do |img|%>
         <div>
-          <img class="item" src="<%=img.gsub("./public","")%>" >
+          <a href="<%=img.gsub("./public","")%>"><img class="item" src="<%=img.gsub("./public","")%>" ></a>
         </div>
         <%end%>
       <%end%>

@@ -1,4 +1,9 @@
 <% content_for :list_entry do %>
+
+<% if @url == "/trash" %>
+<input type="hidden" id="toKnowIfIAmInTrash" value="Diary App - Deleted" /> 
+<% end %>
+
 <div class="row">
   <div class="scrollbar style-scroll">
     <% if @url == "/" || @url == "/trash" || @url == "/edit" || @url == "/search" %>

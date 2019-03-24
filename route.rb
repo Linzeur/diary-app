@@ -42,12 +42,6 @@ get "/photo" do
   erb :list_photos
 end
 
-get "/add-entry" do
-  @data = list_daily
-  erb :list
-  erb :list_entry
-end
-
 get "/delete" do
   update_delete_data(params["id"] , 1)
   redirect "/"
@@ -87,4 +81,12 @@ end
 get "/restore" do
   update_delete_data(params["id"] , 0)
   redirect "/trash"
+end
+
+post "/search" do
+  @url = "/search"
+  @data = search(params)
+  erb :list
+  erb :list_entry
+  erb :entry
 end

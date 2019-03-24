@@ -56,3 +56,12 @@ def recover_element(id)
   data_file = read_data
   data_file[id]
 end
+
+def search(params)
+  list, list_filter = [],[]
+  list = list_daily
+  list.each do |val|
+    list_filter.push(val)  if val["title"].include?(params["search"]) || val["content"].to_s.include?(params["search"])
+  end
+  list_filter
+end

@@ -51,7 +51,7 @@ post '/' do
     redirect "/"
   else
     files = params["file"]
-    save_files(files) unless files.empty?
+    session[:new_images] = save_files(files, request.base_url) unless files.empty?
     redirect "/photo"
   end
 end
@@ -62,10 +62,14 @@ post "/search" do
 end
 
 get "/photo" do
+  session[:search] = ""
   @url = "/photo"
   @list_images = Dir["./public/upload/*"]
-  session[:search] = ""
   @data = list_daily
+  if session[:new_images]
+    @list_new_images = session[:new_images]
+    session.delete(:new_images)
+  end
   erb :list
   erb :list_entry
   erb :list_photos
@@ -82,8 +86,8 @@ get "/highlight" do
 end
 
 get "/trash" do
-  @url = "/trash"
   session[:search] = ""
+  @url = "/trash"
   @data = list_entry_trash
   erb :list
   erb :list_entry

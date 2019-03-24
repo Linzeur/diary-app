@@ -72,13 +72,17 @@ def search(searched)
   list_filter
 end
 
-def save_files(files)
+def save_files(files, url)
+  puts files
+  list_new_images = "<br/><b>Estos son los links de las siguientes imagenes cargadas:</b><br/>"
   files.each.with_index do |file, index|
     filename = (Time.now.getutc.to_i + index).to_s + "." + file[:type].gsub("image/", "")
     File.open("./public/upload/" + filename, "wb") do |file_to_save|
       file_to_save.write file[:tempfile].read
     end
+    list_new_images += "<br/>=>#{url}/upload/#{filename}"
   end
+  list_new_images
 end
 
 

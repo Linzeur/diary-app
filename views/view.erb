@@ -23,7 +23,9 @@
     </div>
     <div class="row content">
       <div class="col-sm-12">
-        <br /><%= @entry_json["content"] if @entry_json%>
+        <div class="scrollbar style-scroll" style="height:421px">
+          <br /><%= @entry_json["content"] if @entry_json%>
+        </div>
       </div>
     <% end %>
     </div>

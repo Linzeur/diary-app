@@ -31,7 +31,7 @@ def sort_parse(list)
   list = list.sort_by{|value| value["datetime"].to_i}.reverse
   list.each do |val|
     val["datetime"] = DateTime.parse(val["datetime"]).strftime("%d-%m-%Y %H:%M:%S")
-    val["content"] = val["content"].gsub!(/(<|>)/,{"<"=>"&lt;",">"=>"&gt;"})
+    val["content"] = val["content"].gsub(/(<|>)/,{"<"=>"&lt;",">"=>"&gt;"})
   end
   list
 end
@@ -45,17 +45,18 @@ def validate_new_or_update_data(parameters)
     inputs["datetime"] = DateTime.parse(date).strftime("%Y%m%d%H%M%S")
     inputs["content_before"] = [] 
     inputs["highlight"] = 0
+    inputs["highlight"] = 1 if parameters.has_key?("highlight")
     inputs["is_deleted"] = 0
     inputs["deleted_datetime"] = ""
     add_data(inputs)
   else
-    update_data(parameters[:id], inputs["title"], inputs["content"])
+    update_data(parameters)
   end
 end
 
 def recover_element(id)
   data_file = read_data
-  data_file[id]["datetime"] = DateTime.parse(data_file[id]["datetime"]).strftime("%Y-%m-%d %H:%M:%S")
+  data_file[id]["datetime"] = DateTime.parse(data_file[id]["datetime"]).strftime("%d-%m-%Y %H:%M:%S")
   data_file[id]
 end
 
@@ -70,5 +71,13 @@ def trash_element(id)
   end
 end
 
+def save_files(files)
+  files.each.with_index do |file, index|
+    filename = (Time.now.getutc.to_i + index).to_s + "." + file[:type].gsub("image/", "")
+    File.open("./public/upload/" + filename, "wb") do |file_to_save|
+      file_to_save.write file[:tempfile].read
+    end
+  end
+end
 
 

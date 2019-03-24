@@ -4,7 +4,7 @@ require "sinatra/content_for"
 require "erb"
 require "./controller/list_methods"
 
-set :port,8001
+set :port,8000
 
 get "/" do
   @url = "/"
@@ -33,14 +33,20 @@ get "/view" do
 end
 
 post '/' do
-  puts params.to_s
-  validate_new_or_update_data(params) 
-  @data = list_daily
-  redirect "/"
+  unless params.has_key?("file")
+    validate_new_or_update_data(params) 
+    @data = list_daily
+    redirect "/"
+  else
+    files = params["file"]
+    save_files(files) unless files.empty?
+    redirect "/photo"
+  end
 end
 
 get "/photo" do
   @url = "/photo"
+  @list_images = Dir["./public/upload/*"]
   @data = list_daily
   erb :list
   erb :list_entry

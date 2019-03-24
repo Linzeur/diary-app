@@ -21,12 +21,13 @@ def add_data(entry)
   save_data(data_file)
 end
 
-def update_data(id, title, content)
+def update_data(parameters)
   data_file = read_data
-  entry_edit = data_file[id]
+  entry_edit = data_file[parameters[:id]]
   entry_edit["content_before"] << [entry_edit["title"], entry_edit["content"]]
-  entry_edit["title"] = title
-  entry_edit["content"] = content
+  entry_edit["title"] = parameters[:title]
+  entry_edit["content"] = parameters[:content]
+  entry_edit["highlight"] = 1  if parameters.has_key?("highlight")
   save_data(data_file)
 end
 

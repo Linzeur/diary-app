@@ -10,7 +10,7 @@
             placeholder="How would you name this story?"
             name="title"
             maxlength="80"
-            style="width:50%;margin-right:20px; font-family: 'Margarine', cursive;"
+            style="width:43%;margin-right:20px; font-family: 'Margarine', cursive;"
             value="<%=@entry_json["title"] if @entry_json%>"
             required
           />
@@ -35,19 +35,9 @@
             />
           <%end %>
           </div>
-          <div style="width:10%;justify-content:right;display:flex">
-            <input type="checkbox" id="toggle"/>
-            <button type="button"
-              class="btn btn-<%= (@entry_json == nil || @entry_json["highlight"] == 0) ? 'default' : 'warning' %> btn-sm"
-              title="Highligth" style="width:50px;" name="highlight">
-            <label id="label" for="toggle">
-              <%# <span id="switch"></span> %>
-              <span id="switch"
-                class="glyphicon glyphicon-star<%="-empty" if @entry_json == nil || @entry_json["highlight"] == 0  || params[:state] == "0"%>"
-                aria-hidden="true"
-              ></span>
-            </label>
-            </button>
+          <div style="width:17%;justify-content:right;display:flex;font-size:20px">
+            <input type="checkbox" name="highlight" id="highlight_entry" <%="checked" if @entry_json != nil && @entry_json["highlight"] == 1 %>/>
+            <label for="highlight_entry" style="margin: auto 5px">Highlight it</label>
           </div>
         </div>
       </div>
@@ -57,7 +47,7 @@
         <br />
         <textarea
           class="form-control"
-          style="width:100%;height:300px; background:white"
+          style="width:100%;height:340px; background:white"
           placeholder="What happened today?"
           name="content"
           required

@@ -17,12 +17,12 @@
         </a>
       </div>
     </div>
-    <% if @url == ( "/" || "/edit" ) %>
+    <% unless /^(\/photo|\/trash)$/ === @url %>
     <div class="row">
       <div class="col-sm-12">
         <div class="card-list">
           <a href="/">
-            <button type="button" class="btn btn-default btn-sm" title="Agregar">
+            <button type="button" class="btn btn-default btn-sm" title="New Entry">
               <span
                     class="glyphicon glyphicon-plus-sign"
                     aria-hidden="true"

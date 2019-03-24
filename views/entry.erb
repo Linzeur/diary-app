@@ -5,13 +5,17 @@ require "date"
     <div class="row content">
       <div class="col-sm-9" style="padding-top: 25px" ;>
         <div class="input-group" style="display: -webkit-box;">
-          <input
+          <input 
             type="text"
             class="form-control"
             placeholder="How would you name this story?"
             name="title"
             maxlength="80"
-            style="width:60%;margin-right:100px; font-family: 'Margarine', cursive;"
+            style="width: 450px;
+            margin-right: 100px;
+            font-family: 'Helvetica', cursive;
+            height: 50px;
+            font-size: large;"
             value="<%=@entry_json["title"] if @entry_json%>"
             required
           />
@@ -21,21 +25,19 @@ require "date"
           <%else%>
             <input
               type="date"
-              class="form-control"
+              class="dates"
               name="date"
-              style="width:160px; font-family: 'Questrial', serif;"
               value="<%= Time.now.strftime("%Y-%m-%d") %>"
               required
               /><input
               type="time"
-              class="form-control"
+              class="dates"
               name="time"
-              style="width:160px; font-family: 'Questrial', serif;"
               value="<%= Time.now.strftime("%H:%M") %>"
               required
           />
           <%end %>
-          <button type="button" class="btn btn-<%= (@entry_json == nil || @entry_json["highlight"] == 0) ? 'default' : 'warning' %>" btn-sm form-control" title="Highligth" style="width:50px;margin-left: 45px">
+          <button type="button" class="btn btn-<%= (@entry_json == nil || @entry_json["highlight"] == 0) ? 'default' : 'warning' %>" btn-sm form-control" title="Highligth" style="width:50px;margin-left: -50px">
             <span
               class="glyphicon glyphicon-star<%="-empty" if @entry_json == nil || @entry_json["highlight"] == 0 %>"
               aria-hidden="true"
@@ -48,24 +50,18 @@ require "date"
     <div class="row content">
       <div class="col-sm-12">
         <br />
-        <textarea
-          class="form-control"
-          style="width:100%;height:300px; background:white"
+        <%# I changed height of textarea for working  %>
+        <textarea class="textarea1"
           placeholder="What happened today?"
           name="content"
           required
         ><%= @entry_json["content"] if @entry_json%></textarea>
         <br /><br />
-        <div style="text-align: right">
+        <div style="text-align: right; margin: -40px 0px 10px 0px;">
           <input
+            class="input2"
             type="submit"
-            value="Save"
-            style="width: 20%; font-size: large; background-color: #4cd137;
-            color: white; margin-bottom: 30px; 
-            font-family: 'Questrial', sans-serif;
-            border-color: #4cd137;
-            border-radius: 15px;
-            "
+            value="Save story"
           />
         </div>
       </div>

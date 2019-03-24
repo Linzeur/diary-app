@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col-sm-4">
         <a class="menu" href="/">
-          <p class="title-option <%= "select" if @url == "/" || @url == "/edit" %>">Daily</p>
+          <p class="title-option <%= "select" if @url == "/" || @url == "/edit" || @url == "/search" %>">Daily</p>
         </a>
       </div>
       <div class="col-sm-4">
@@ -17,18 +17,25 @@
         </a>
       </div>
     </div>
-    <% if @url == ( "/" || "/edit" ) %>
+    <% if @url == "/" || @url == "/edit" || @url == "/search" %>
     <div class="row">
       <div class="col-sm-12">
         <div class="card-list">
-          <a href="/add-entry">
-            <button type="button" class="btn btn-default btn-sm" title="Agregar">
-              <span
-                    class="glyphicon glyphicon-plus-sign"
-                    aria-hidden="true"
-              ></span>
-            </button>
-          </a>
+          <form action="/search" method="post">
+          <div class="input-group">
+            <input type="text" name="search" class="form-control" placeholder="Buscar..." value="<%= params["search"] %>">
+            <div class="input-group-btn">
+                <button type="submit" class="btn btn-default" title="buscar">
+                  <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                </button>
+              </form>
+              <a href="/">
+                <button type="button" class="btn btn-default" title="Agregar">
+                  <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
+                </button>
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </div>

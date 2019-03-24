@@ -107,3 +107,9 @@ textarea {
 .form-control {
   padding: 0px 10px;
 }
+
+.p1 {
+  text-align: center;
+  font-size: large;
+  font-family: "Margarine", cursive;
+}

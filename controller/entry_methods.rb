@@ -1,6 +1,5 @@
 require 'json'
-
-$path_data = "./data/entries.json"
+$path_data = File.dirname(__FILE__) + "/../data/entries.json"
 def read_data
   data_file = File.read($path_data)
   data_file = "{}" if data_file == ""

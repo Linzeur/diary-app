@@ -6,7 +6,12 @@ textarea {
   resize: none;
   font-family: Helvetica, cursive;
 }
-
+header {
+  background: #000;
+}
+a {
+  color: #eaeaea;
+}
 .body-daily {
   margin: 4%;
 }
@@ -171,8 +176,7 @@ textarea {
   width: 99%;
   margin-right: 10px;
   font-family: "Helvetica", cursive;
-  height: 50px;
   font-size: large;
   padding: 20px;
-  height: 100px;
+  height: 2000px;
 }

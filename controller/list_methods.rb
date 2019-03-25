@@ -3,7 +3,9 @@ require "date"
 
 def validate_new_or_update_data(parameters)
   inputs = Hash.new
-  inputs["title"] = parameters[:title]
+  #Feature: Write entries #1 - I considered that title can't contain HTML code
+  inputs["title"] = parameters[:title].gsub(/(<|>)/, {"<"=>"&lt;", ">"=>"&gt;"})
+  #Feature: Write entries #1 - Content can contain HTML code
   inputs["content"] = parameters[:content]
   unless parameters.has_key?("id")
     date = parameters[:date] + " " + parameters[:time]

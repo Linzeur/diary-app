@@ -20,8 +20,8 @@
     <% unless /^(\/photo|\/trash)$/ === @url %>
     <div class="row">
       <div class="col-sm-12">
-        <div class="card-list" style="width:88%">
-          <form action="/search" method="post" style="width:100%">
+        <div class="card-list search-content">
+          <form action="/search" method="post">
             <div class="input-group">
               <input type="text" name="search" class="form-control" placeholder="What entries do you want search?" value="<%= params["search"] %>"/>
               <div class="input-group-btn">

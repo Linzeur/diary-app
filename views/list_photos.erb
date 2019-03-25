@@ -1,10 +1,18 @@
 <% content_for :list_photos do %>
   <div class="card-block card-shadow">
-    <div class="content container" style="width:100%">
-      <%Dir["./public/upload/*"].each do |img|%>
-      <div>
-        <img class="item" src="<%=img.gsub("./public","")%>" >
+    <div class="content container scrollbar style-scroll" style="height:448px;width:100%">
+      <% if @list_images.empty? %>
+      <div class="col-sm-12">
+        <div class="card-list">
+          <h3> There are no photos </h3>
+        </div>
       </div>
+      <% else %>
+        <%@list_images.sort.reverse.each do |img|%>
+        <div>
+          <a href="<%=img.gsub("./public","")%>"><img class="item" src="<%=img.gsub("./public","")%>" ></a>
+        </div>
+        <%end%>
       <%end%>
     </div>
   </div>

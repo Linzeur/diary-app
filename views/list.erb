@@ -17,9 +17,10 @@
         </a>
       </div>
     </div>
-    <% if @url == "/" || @url == "/edit" || @url == "/search" %>
+    <% unless /^(\/photo|\/trash)$/ === @url %>
     <div class="row">
       <div class="col-sm-12">
+<<<<<<< HEAD
         <div class="card-list">
           <a href="/">
             <button type="button" class="btn btn-default btn-sm" title="add">
@@ -44,6 +45,24 @@
               </a>
             </div>
           </div>
+=======
+        <div class="card-list" style="width:88%">
+          <form action="/search" method="post" style="width:100%">
+            <div class="input-group">
+              <input type="text" name="search" class="form-control" placeholder="What entries do you want search?" value="<%= params["search"] %>"/>
+              <div class="input-group-btn">
+                  <button type="submit" class="btn btn-default" title="Search entries">
+                    <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                  </button>
+                  <a href="/">
+                    <button type="button" class="btn btn-default" title="New Entry">
+                      <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
+                    </button>
+                  </a>
+              </div>
+            </div>
+          </form>
+>>>>>>> master
         </div>
       </div>
     </div>

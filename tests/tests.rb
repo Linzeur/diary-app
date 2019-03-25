@@ -3,6 +3,11 @@ require "erb"
 require "rspec"
 require "rack/test"
 
+# To execute tests write the following commands in order from diary-app path
+# bundle install
+# cd tests
+# rspec tests.rb
+
 describe "main" do
     
     include Rack::Test::Methods

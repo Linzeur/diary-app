@@ -36,7 +36,7 @@ def recover_element(id, as_text)
   val = data_file[id]
   val["datetime"] = DateTime.parse(val["datetime"]).strftime("%d-%m-%Y %H:%M:%S")
   #Bug: Distorted display #42 - Replace characters <, > or \r\n with their equivalents
-  val["content"] = val["content"].gsub(/(<|>|\r\n)/, {"<"=>"&lt;", ">"=>"&gt;", "\r\n"=>"<br/>"}) if as_text
+  val["content"] = val["content"].gsub(/(<|>)/, {"<"=>"&lt;", ">"=>"&gt;"}) if as_text
   val = Hash.new unless validate_diff_days(val["deleted_datetime"])
   val
 end
@@ -77,12 +77,10 @@ end
 def list_entry_trash
   list = []
   data = read_data
-  now_date = DateTime.now()
   data.each do |val|
     if val[1]["is_deleted"] == 1
       #Feature: Delete entries #6 - Before 1 day, the entries deleted can show
-      temp_datetime = DateTime.parse(val[1]["deleted_datetime"])
-      list << val[1] if ((now_date - temp_datetime) < 1)
+      list << val[1] if validate_diff_days(val[1]["deleted_datetime"])
     end
   end
   list = sort_parse(list)

@@ -219,6 +219,7 @@ textarea {
 .view-date {
   font-weight: 700;
   margin: 0;
+  font-size: 20px;
 }
 .view-content {
   height: 480px;

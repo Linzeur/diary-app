@@ -20,16 +20,20 @@ end
 get "/edit" do
   session[:search] = "" unless session[:search]
   @url = "/edit" 
-  @entry_json = recover_element(params["id"])
+  @entry_json = recover_element(params["id"], true)
   params["search"] = session[:search]
   @data = search(params["search"])
   erb :list
   erb :list_entry
-  erb :entry
+  if @entry_json.empty?
+    erb :view
+  else
+    erb :entry
+  end
 end
 
 get "/view" do
-  @entry_json = recover_element(params["id"])
+  @entry_json = recover_element(params["id"], false)
   if params.has_key?("view")
     @url = "/trash"
     @data = list_entry_trash

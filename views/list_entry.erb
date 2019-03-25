@@ -32,7 +32,7 @@
                 <h4><%= daily["title"] %></h4>
                 <p class="overflow ellipsis"><%= daily["content"] %></p>
               </div>
-              <div style="width:15%;text-align:center">
+              <div class="block-buttons">
                 <a href="/view?id=<%= daily["id"] %><%= "&view=trash" if @url == "/trash"%>">
                   <button type="button" class="btn btn-default btn-sm" title="View Entry">
                     <span
@@ -77,13 +77,13 @@
       <div class="col-sm-12">
         <div class="card-list">
           <form action="/" method="post" enctype="multipart/form-data" style="width: 100%">
-            <div class="input-group" style="display:table;width: 100%">
-              <input type="file" accept="image/*" multiple="multiple" name="file[]" style="border: 1px solid #ccc;width: 100%" required/>
+            <div class="input-group upload-img">
+              <input type="file" accept="image/*" multiple="multiple" name="file[]" required/>
               <br/>
-              <span class="input-group" style="text-align:right">
+              <span class="input-group submit-img">
                 <button class="btn btn-default" type="submit">Upload Photos</button>
               </span>
-              <span style="font-size:small"><%=@list_new_images if @list_new_images%></span>
+              <span class="list-img"><%=@list_new_images if @list_new_images%></span>
             </div>
           </form>
         </div>

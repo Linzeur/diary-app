@@ -1,14 +1,18 @@
 <% content_for :view do %>
-  <div class="card-block card-shadow">
+  <div class="card-block card-shadow view-content">
     <div class="row content">
     <% if @entry_json.empty? %>
-      <p class="p1">Your story was deleted</p>
+      <p class="entry-delete">Your story was deleted</p>
     <% else %>
-      <div class="col-sm-9" style="padding-top: 25px;width:100%">
-        <div class="input-group" style="display:flex; font-family: 'Margarine', cursive;font-size:20px">
-          <div style="width:70%"><label><%=@entry_json["title"]%></label></div>
-          <div style="width:20%; text-align: center"><label><%=@entry_json["datetime"]%></label></div>
-          <div style="width:10%;justify-content:right;display:flex">
+      <div class="col-sm-12">
+        <div class="row view-title">
+          <div class="col-sm-7">
+            <h2><%=@entry_json["title"]%></h2>
+          </div>
+          <div class="col-sm-3">
+            <p class="view-date"><%=@entry_json["datetime"]%></p>
+          </div>
+          <div class="col-sm-2" style="justify-content:right;display:flex">
             <button type="button"
               class="btn btn-<%= (@entry_json["highlight"] == 0) ? 'default' : 'warning' %> btn-sm"
               title="Highligth" style="width:50px" disabled>
@@ -23,7 +27,7 @@
     </div>
     <div class="row content">
       <div class="col-sm-12">
-        <div class="scrollbar style-scroll" style="height:421px">
+        <div class="scrollbar style-scroll">
           <br /><%= @entry_json["content"] if @entry_json%>
         </div>
       </div>

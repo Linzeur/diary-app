@@ -11,6 +11,11 @@ describe "main" do
       Sinatra::Application
     end  
   
+    it "Allow access to homepage as a bundle" do
+      get '/'
+      expect(last_response).to be_ok
+    end
+
     it "Try to get home with all diary posts" do
       response = get "/"
       expect(response.status).to eql(200)

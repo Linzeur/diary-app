@@ -224,3 +224,12 @@ textarea {
 .view-content {
   height: 480px;
 }
+.jumbotron {
+  background-color: black !important;
+  padding-top: 10px !important;
+  padding-bottom: 30px !important;
+  color: springgreen !important;
+}
+.jumbotron h1 {
+  font-size: 40px !important;
+}

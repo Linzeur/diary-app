@@ -72,13 +72,18 @@ def search(searched)
   list_filter
 end
 
-def save_files(files)
+def save_files(files, url)
+  directory_name = "./public/upload/"
+  Dir.mkdir(directory_name) unless File.exists?(directory_name)
+  list_new_images = "<br/><b>Estos son los links de las siguientes imagenes cargadas:</b><br/>"
   files.each.with_index do |file, index|
     filename = (Time.now.getutc.to_i + index).to_s + "." + file[:type].gsub("image/", "")
-    File.open("./public/upload/" + filename, "wb") do |file_to_save|
+    File.open(directory_name + filename, "wb") do |file_to_save|
       file_to_save.write file[:tempfile].read
     end
+    list_new_images += "<br/>=>#{url}/upload/#{filename}"
   end
+  list_new_images
 end
 
 
